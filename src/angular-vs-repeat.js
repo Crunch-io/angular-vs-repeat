@@ -534,6 +534,10 @@
                             $scope.startIndex = $$options.latch ? _minStartIndex : __startIndex;
                             $scope.endIndex = $$options.latch ? _maxEndIndex : __endIndex;
 
+                            // https://github.com/kamilkp/angular-vs-repeat/pull/146
+                            if (_maxEndIndex < $scope.startIndex)
+                                $scope.startIndex = _maxEndIndex;
+
                             var digestRequired = false;
                             if (_prevStartIndex == null) {
                                 digestRequired = true;
